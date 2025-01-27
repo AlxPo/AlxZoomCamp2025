@@ -139,7 +139,7 @@ Which was the pick up day with the longest trip distance?
 Use the pick up time for your calculations.
 
 ### Answer
-SQL : 
+
 ```sql
 SELECT 
 	lpep_pickup_datetime,
@@ -160,7 +160,6 @@ Which were the top pickup locations with over 13,000 in
 Consider only `lpep_pickup_datetime` when filtering by date.
 
 ### Answer
-SQL
 
 ```sql
 SELECT 
@@ -186,7 +185,7 @@ the largest tip?
 Note: it's `tip` , not `trip`
 
 ### Answer 
-Code : 
+ 
 ```sql
 SELECT 
 	t.tip_amount,
