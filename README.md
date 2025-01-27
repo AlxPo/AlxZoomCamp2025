@@ -76,12 +76,35 @@ wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_z
 
 Download this data and put it into Postgres.
 
-You can use the code from the course. It's up to you whether
-you want to use Jupyter or a python script.
 
-### Preparation
-docker-compose.yml
-upload_data.ipynb
+### docker-compose.yml
+```bash
+docker-compose up
+```
+### Dockerfile
+
+```bash
+docker build -t taxi_ingest:v001 .
+```
+
+### ingest_data.py
+
+```bash
+URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
+
+docker run -it \
+--network=alxzoomcamp2025_default \
+taxi_ingest:v001 \
+  --user=root \
+  --password=root \
+  --host=pgdatabase \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=green_tripdata\
+  --url=${URL}
+```
+
+
 
 ## Question 3. Trip Segmentation Count
 
@@ -197,9 +220,6 @@ Which of the following sequences, **respectively**, describes the workflow for:
 3. Remove all resources managed by terraform`
 
 Answer:
-- terraform import, terraform apply -y, terraform destroy
-- teraform init, terraform plan -auto-apply, terraform rm
-- terraform init, terraform run -auto-aprove, terraform destroy
 - terraform init, terraform apply -auto-aprove, terraform destroy
-- terraform import, terraform apply -y, terraform rm
+
 
